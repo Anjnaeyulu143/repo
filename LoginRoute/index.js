@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
-import { Container, Card, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
 export const LoginRoute = () => {
+  const [usererr, setUsererr] = useState("");
+  const [pass, setPass] = useState("");
+
+  const blurEventUser = (e) => {
+    e.target.value === "" ? setUsererr("Required*") : setUsererr("");
+  };
+
+  const blurEventPass = (e) => {
+    e.target.value === "" ? setPass("Required*") : setPass("");
+  };
   return (
     <div
       className="d-flex justify-content-center align-items-center p-4 bg-dark"
@@ -33,7 +43,9 @@ export const LoginRoute = () => {
               className="w-100 form-control bg-dark"
               placeholder="Username"
               id="userName"
+              onBlur={blurEventUser}
             />
+            <p className="text-danger">{usererr}</p>
           </div>
           <div className="w-100 mb-3">
             <label
@@ -51,7 +63,9 @@ export const LoginRoute = () => {
               className="w-100 form-control bg-dark"
               placeholder="Password"
               id="userPassword"
+              onBlur={blurEventPass}
             />
+            <p className="text-danger">{pass}</p>
           </div>
           <Card.Text style={{ textTransform: "capitalize" }}></Card.Text>
         </Card.Body>
