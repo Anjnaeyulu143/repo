@@ -1,4 +1,5 @@
-const { sum, sub } = require("./index");
+const calculator = require("./index");
+const { sum, sub } = calculator;
 
-console.log(sum(5, 3));
-console.log(sub(5, 3));
+console.log(sum(4, 4));
+console.log(sub(4, 4));
